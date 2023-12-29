@@ -1,0 +1,11 @@
+name: laravel-template
+recipe: laravel
+config:
+  webroot: public/
+  php: '8.1'
+  via: nginx
+  services:
+    phpMyAdmin:
+      type: phpmyadmin
+      hosts:
+        - database
