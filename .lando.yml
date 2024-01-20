@@ -1,4 +1,4 @@
-name: laravel-template
+name: mikepage-dev
 recipe: laravel
 config:
   webroot: public/
