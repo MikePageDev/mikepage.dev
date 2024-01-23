@@ -67,7 +67,7 @@
             </ul>
         </div>
         <div class="text-sm text-neutral-500">
-            <p>This site has been developed by Mike Page, and is open source</p>
+            <p>This site has been developed by Mike Page, and is <a href="https://github.com/MikePageDev/mikepage.dev" class="underline hover:text-neutral-400">open source</a></p>
         </div>
     </footer>
 </body>
