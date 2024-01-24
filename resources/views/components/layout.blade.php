@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
       x-cloak
-      x-data="{darkMode: localStorage.getItem('dark') === 'true'}"
+      x-data="{darkMode: localStorage.getItem('dark') === 'true', menuOpen: false}"
       x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
       x-bind:class="{'dark': darkMode}"
 >
@@ -13,12 +13,12 @@
     @vite('resources/js/app.js')
 </head>
 <body class="min-h-screen max-w-screen-lg mx-auto flex flex-col bg-white dark:bg-neutral-900 dark:text-white">
-    <nav class="flex h-20 items-center">
-        <a href="{'{ route('home') }}" class="h-14 w-14 rounded-full border-2 border-white dark:border-neutral-700 group shadow">
+    <nav class="relative flex justify-between h-20 items-center px-5">
+        <a href="{{ route('home') }}" class="h-14 w-14 rounded-full border-2 border-white dark:border-neutral-700 group shadow">
             <img src="{{ asset('img/mike.jpg') }}" alt="Mike Page" class="rounded-full group-hover:opacity-80 transition-all duration-150">
         </a>
 
-        <ul class="flex w-1/2 mx-auto justify-around items-center">
+        <ul class="hidden sm:flex w-1/2 mx-auto justify-around items-center">
             <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
                 <a href="{{ route('about') }}">About</a>
             </li>
@@ -29,15 +29,33 @@
                 <a href="{{ route('contact') }}">Contact</a>
             </li>
         </ul>
+        <div x-on:click="menuOpen = !menuOpen" class="sm:hidden">
+            <x-heroicon-m-bars-3 x-show="!menuOpen" class="h-8 stroke-gray-700 fill-gray-700 dark:stroke-gray-100 dark:fill-gray-100 cursor-pointer" />
+            <x-heroicon-o-x-mark x-show="menuOpen" class="h-8 stroke-2 stroke-gray-700 fill-gray-700 dark:stroke-gray-100 dark:fill-gray-100" />
+        </div>
+        <div x-show="menuOpen" class="absolute sm:hidden top-20 left-0 shadow w-full text-center text-lg pb-3">
+            <ul class="flex flex-col gap-y-3">
+                <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
+                    <a href="{{ route('about') }}">About</a>
+                </li>
+                <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
+                    <a href="{{ route('portfolio') }}">Portfolio</a>
+                </li>
+                <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
+                    <a href="{{ route('contact') }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+
         <button x-cloak x-on:click="darkMode = !darkMode;">
             <x-heroicon-s-moon x-show="!darkMode" class="p-2 ml-3 w-8 h-8 text-gray-700 bg-neutral-100 rounded-md transition cursor-pointer hover:bg-neutral-200" />
             <x-heroicon-s-sun x-show="darkMode" class="p-2 ml-3 w-8 h-8 text-gray-100 bg-neutral-700 rounded-md transition cursor-pointer dark:hover:bg-neutral-600" />
         </button>
     </nav>
-    <main class="flex flex-1 flex-col">
+    <main class="flex flex-1 flex-col px-5">
         {{ $slot }}
     </main>
-    <footer class="flex flex-col items-center py-5">
+    <footer class="flex flex-col items-center py-5 px-5 text-center">
         <div id="socials" class="pb-3">
             <ul class="flex gap-4">
                 <li>
@@ -58,7 +76,7 @@
 
                 <li>
                     <a href="https://www.linkedin.com/in/michaelaspage/" class="text-neutral-500 hover:text-neutral-400">
-                        <svg role="img" role="LinkedIn" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <svg role="img" aria-label="LinkedIn" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.335 18.339H15.67V14.162C15.67 13.166 15.65 11.884 14.28 11.884C12.891 11.884 12.679 12.968 12.679 14.089V18.339H10.013V9.75H12.573V10.92H12.608C12.966 10.246 13.836 9.533 15.136 9.533C17.836 9.533 18.336 11.311 18.336 13.624V18.339H18.335ZM7.003 8.575C6.79956 8.57526 6.59806 8.53537 6.41006 8.45761C6.22207 8.37984 6.05127 8.26574 5.90746 8.12184C5.76365 7.97793 5.64965 7.80706 5.57201 7.61901C5.49437 7.43097 5.4546 7.22944 5.455 7.026C5.4552 6.71983 5.54618 6.4206 5.71644 6.16615C5.8867 5.91169 6.12859 5.71343 6.41153 5.59645C6.69447 5.47947 7.00574 5.44902 7.30598 5.50894C7.60622 5.56886 7.88196 5.71648 8.09831 5.93311C8.31466 6.14974 8.46191 6.42566 8.52145 6.72598C8.58099 7.0263 8.55013 7.33753 8.43278 7.62032C8.31543 7.9031 8.11687 8.14474 7.86219 8.31467C7.60751 8.4846 7.30817 8.5752 7.002 8.575H7.003ZM8.339 18.339H5.666V9.75H8.34V18.339H8.339ZM19.67 3H4.329C3.593 3 3 3.58 3 4.297V19.703C3 20.42 3.594 21 4.328 21H19.666C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3H19.669H19.67Z"/>
                         </svg>
                     </a>
@@ -67,7 +85,7 @@
             </ul>
         </div>
         <div class="text-sm text-neutral-500">
-            <p>This site has been developed by Mike Page, and is open source</p>
+            <p>This site has been developed by Mike Page, and is <a href="https://github.com/MikePageDev/mikepage.dev" class="underline hover:text-neutral-400">open source</a></p>
         </div>
     </footer>
 </body>
