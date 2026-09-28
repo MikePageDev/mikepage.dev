@@ -2,7 +2,7 @@ name: mikepage-dev
 recipe: laravel
 config:
   webroot: public/
-  php: '8.1'
+  php: '8.5'
   via: nginx
   services:
     phpMyAdmin:
