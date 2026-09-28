@@ -4,6 +4,7 @@ config:
   webroot: public/
   php: '8.5'
   via: nginx
+  xdebug: coverage
   services:
     phpMyAdmin:
       type: phpmyadmin
