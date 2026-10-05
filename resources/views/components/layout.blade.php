@@ -9,6 +9,7 @@
     $navLinks = [
         'about' => 'About',
         'portfolio' => 'Portfolio',
+        'services' => 'Services',
         'contact' => 'Contact',
     ];
 @endphp
