@@ -95,7 +95,7 @@ class LayoutTest extends TestCase
             $this->fail('No main <nav> found.');
         }
 
-        foreach (['about', 'portfolio', 'contact'] as $route) {
+        foreach (['about', 'portfolio', 'services', 'contact'] as $route) {
             $this->assertSame(
                 2,
                 substr_count($matches[0], 'href="'.route($route).'"'),
