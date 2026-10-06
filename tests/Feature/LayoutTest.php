@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class LayoutTest extends TestCase
@@ -109,5 +110,37 @@ class LayoutTest extends TestCase
         $this->get('/')
             ->assertSee("localStorage.getItem('dark') === 'true'", false)
             ->assertSee("localStorage.setItem('dark', val)", false);
+    }
+
+    public function test_layout_has_a_csrf_token_meta_tag(): void
+    {
+        $this->get('/')->assertSee('<meta name="csrf-token" content="', false);
+    }
+
+    /**
+     * One request per test: Livewire only prints its scripts once per app instance.
+     *
+     * @return array<string, array{string}>
+     */
+    public static function pagesWithoutComponents(): array
+    {
+        return [
+            'home' => ['/'],
+            'about' => ['/about'],
+            'services' => ['/services'],
+        ];
+    }
+
+    #[DataProvider('pagesWithoutComponents')]
+    public function test_livewire_scripts_load_on_pages_without_components(string $uri): void
+    {
+        $content = $this->get($uri)->getContent();
+
+        $this->assertIsString($content);
+        $this->assertMatchesRegularExpression(
+            '#<script[^>]+livewire[^>]*\.js#',
+            $content,
+            "Livewire (and with it Alpine) must load on [$uri].",
+        );
     }
 }

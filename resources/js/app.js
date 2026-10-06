@@ -1,7 +1,1 @@
-import './bootstrap';
-
-import Alpine from 'alpinejs'
-
-window.Alpine = Alpine
-
-Alpine.start()
+// Alpine is provided by Livewire (loaded in the layout), so it is not imported here.

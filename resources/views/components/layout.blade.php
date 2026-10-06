@@ -22,6 +22,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -39,6 +40,8 @@
             }
         } catch (e) {}
     </script>
+    @filamentStyles
+    @livewireStyles
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 </head>
@@ -93,6 +96,8 @@
             <p>This site has been developed by Mike Page, and is <a href="https://github.com/MikePageDev/mikepage.dev" class="underline hover:text-neutral-400">open source</a></p>
         </div>
     </footer>
+    @livewireScripts
+    @filamentScripts
 </body>
 
 </html>
