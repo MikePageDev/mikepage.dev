@@ -27,6 +27,4 @@ Route::get('/portfolio', function () {
 
 Route::view('/services', 'services')->name('services');
 
-Route::get('/contact', function () {
-    return view('home');
-})->name('contact');
+Route::view('/contact', 'contact')->name('contact');
