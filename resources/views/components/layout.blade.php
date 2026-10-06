@@ -43,9 +43,9 @@
     @vite('resources/js/app.js')
 </head>
 
-<body class="min-h-screen max-w-screen-lg mx-auto flex flex-col bg-white dark:bg-neutral-900 dark:text-white">
+<body class="min-h-screen max-w-(--breakpoint-lg) mx-auto flex flex-col bg-white dark:bg-neutral-900 dark:text-white">
     <nav aria-label="Main" class="relative flex justify-between h-20 items-center px-5">
-        <a href="{{ route('home') }}" class="h-14 w-14 rounded-full border-2 border-white dark:border-neutral-700 group shadow">
+        <a href="{{ route('home') }}" class="h-14 w-14 rounded-full border-2 border-white dark:border-neutral-700 group shadow-sm">
             <img src="{{ asset('img/mike.jpg') }}" alt="Mike Page" class="rounded-full group-hover:opacity-80 transition-all duration-150">
         </a>
 
@@ -67,7 +67,7 @@
             <x-heroicon-m-bars-3 x-show="!menuOpen" aria-hidden="true" class="h-8 stroke-gray-700 fill-gray-700 dark:stroke-gray-100 dark:fill-gray-100 cursor-pointer" />
             <x-heroicon-o-x-mark x-show="menuOpen" x-cloak aria-hidden="true" class="h-8 stroke-2 stroke-gray-700 fill-gray-700 dark:stroke-gray-100 dark:fill-gray-100" />
         </button>
-        <div id="mobile-menu" x-show="menuOpen" x-cloak class="absolute sm:hidden top-20 left-0 z-10 shadow w-full text-center text-lg pb-3 bg-white dark:bg-neutral-900">
+        <div id="mobile-menu" x-show="menuOpen" x-cloak class="absolute sm:hidden top-20 left-0 z-10 shadow-sm w-full text-center text-lg pb-3 bg-white dark:bg-neutral-900">
             <ul class="flex flex-col gap-y-3">
                 @foreach ($navLinks as $route => $label)
                     <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
