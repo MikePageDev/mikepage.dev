@@ -11,4 +11,18 @@ return [
     // Shown on the contact page when set.
     'contact_email' => env('CONTACT_EMAIL'),
 
+    // Only these email addresses can use the admin panel (comma-separated ADMIN_EMAILS). Empty means nobody.
+    'admin_emails' => (function (): array {
+        $raw = env('ADMIN_EMAILS');
+
+        if (! is_string($raw)) {
+            return [];
+        }
+
+        return array_values(array_filter(array_map(
+            fn (string $email): string => strtolower(trim($email)),
+            explode(',', $raw),
+        )));
+    })(),
+
 ];

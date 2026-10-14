@@ -4,8 +4,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "format": "prettier --write 'resources/views/**/*.blade.php'",
-        "format:check": "prettier --check 'resources/views/**/*.blade.php'"
+        "format": "prettier --no-error-on-unmatched-pattern --write 'resources/views/**/*.blade.php' 'packages/*/resources/views/**/*.blade.php'",
+        "format:check": "prettier --no-error-on-unmatched-pattern --check 'resources/views/**/*.blade.php' 'packages/*/resources/views/**/*.blade.php'"
     },
     "devDependencies": {
         "@shufo/prettier-plugin-blade": "^1.16.2",

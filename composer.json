@@ -5,13 +5,27 @@
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/mikepagedev/filament-portfolio",
+            "no-api": true
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/mikepagedev/portfolio-frontend",
+            "no-api": true
+        }
+    ],
     "require": {
         "php": "^8.5",
         "blade-ui-kit/blade-heroicons": "^2.2",
         "danharrin/livewire-rate-limiting": "^2.0",
         "filament/forms": "^5.0",
         "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0"
+        "laravel/tinker": "^3.0",
+        "mikepagedev/filament-portfolio": "@dev",
+        "mikepagedev/portfolio-frontend": "@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -21,7 +35,8 @@
         "laravel/pint": "^1.27",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
-        "phpunit/phpunit": "^12.5.12"
+        "phpunit/phpunit": "^12.5.12",
+        "sandersander/composer-link": "^0.7.3"
     },
     "autoload": {
         "psr-4": {
@@ -84,7 +99,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "sandersander/composer-link": true
         }
     },
     "minimum-stability": "stable",
