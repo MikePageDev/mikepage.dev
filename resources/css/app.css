@@ -1,4 +1,7 @@
 @import 'tailwindcss';
+
+/* Package views live in git-ignored vendor/, which Tailwind skips by default. */
+@source '../../vendor/mikepagedev/portfolio-frontend/resources/views';
 @import '../../vendor/filament/support/resources/css/index.css';
 @import '../../vendor/filament/forms/resources/css/index.css';
 @import '../../vendor/filament/schemas/resources/css/index.css';

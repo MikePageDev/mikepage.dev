@@ -32,7 +32,7 @@ class ServicesPageTest extends TestCase
     public function test_services_is_in_the_nav_between_portfolio_and_contact(): void
     {
         $this->get('/')->assertSeeInOrder([
-            route('portfolio'),
+            route('portfolio.index'),
             route('services'),
             route('contact'),
         ]);

@@ -17,7 +17,7 @@ class HomePageTest extends TestCase
     public function test_links_to_portfolio_and_contact(): void
     {
         $this->get('/')
-            ->assertSee('href="'.route('portfolio').'"', false)
+            ->assertSee('href="'.route('portfolio.index').'"', false)
             ->assertSee('href="'.route('contact').'"', false)
             ->assertSee('See my work')
             ->assertSee('Get in touch');

@@ -2,11 +2,14 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class LayoutTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -59,7 +62,7 @@ class LayoutTest extends TestCase
 
         $this->assertIsString($content);
         $this->assertMatchesRegularExpression(
-            '#href="'.preg_quote(route('portfolio'), '#').'"\s+aria-current="page"#',
+            '#href="'.preg_quote(route('portfolio.index'), '#').'"\s+aria-current="page"#',
             $content,
         );
     }
@@ -96,7 +99,7 @@ class LayoutTest extends TestCase
             $this->fail('No main <nav> found.');
         }
 
-        foreach (['about', 'portfolio', 'services', 'contact'] as $route) {
+        foreach (['about', 'portfolio.index', 'services', 'contact'] as $route) {
             $this->assertSame(
                 2,
                 substr_count($matches[0], 'href="'.route($route).'"'),

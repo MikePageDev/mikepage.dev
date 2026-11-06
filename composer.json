@@ -5,18 +5,6 @@
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mikepagedev/filament-portfolio",
-            "no-api": true
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/mikepagedev/portfolio-frontend",
-            "no-api": true
-        }
-    ],
     "require": {
         "php": "^8.5",
         "blade-ui-kit/blade-heroicons": "^2.2",
@@ -24,8 +12,8 @@
         "filament/forms": "^5.0",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
-        "mikepagedev/filament-portfolio": "@dev",
-        "mikepagedev/portfolio-frontend": "@dev"
+        "mikepagedev/filament-portfolio": "^1.0",
+        "mikepagedev/portfolio-frontend": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

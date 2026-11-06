@@ -8,7 +8,7 @@
     $pageDescription = $description ?? config('site.description');
     $navLinks = [
         'about' => 'About',
-        'portfolio' => 'Portfolio',
+        'portfolio.index' => 'Portfolio',
         'services' => 'Services',
         'contact' => 'Contact',
     ];
@@ -55,7 +55,7 @@
         <ul class="hidden sm:flex w-1/2 mx-auto justify-around items-center">
             @foreach ($navLinks as $route => $label)
                 <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
-                    <a href="{{ route($route) }}" @if (request()->routeIs($route . '*')) aria-current="page" class="font-semibold" @endif>{{ $label }}</a>
+                    <a href="{{ route($route) }}" @if (request()->routeIs(\Illuminate\Support\Str::before($route, '.') . '*')) aria-current="page" class="font-semibold" @endif>{{ $label }}</a>
                 </li>
             @endforeach
         </ul>
@@ -74,7 +74,7 @@
             <ul class="flex flex-col gap-y-3">
                 @foreach ($navLinks as $route => $label)
                     <li class="mx-3 hover:text-neutral-600 dark:hover:text-neutral-400">
-                        <a href="{{ route($route) }}" @if (request()->routeIs($route . '*')) aria-current="page" class="font-semibold" @endif>{{ $label }}</a>
+                        <a href="{{ route($route) }}" @if (request()->routeIs(\Illuminate\Support\Str::before($route, '.') . '*')) aria-current="page" class="font-semibold" @endif>{{ $label }}</a>
                     </li>
                 @endforeach
             </ul>
