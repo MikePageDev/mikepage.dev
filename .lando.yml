@@ -2,11 +2,14 @@ name: mikepage-dev
 recipe: laravel
 config:
   webroot: public/
-  php: '8.5'
+  php: "8.5"
   via: nginx
   xdebug: coverage
-  services:
-    phpMyAdmin:
-      type: phpmyadmin
-      hosts:
-        - database
+services:
+  mailpit:
+    type: mailpit
+    mailFrom:
+      - appserver
+proxy:
+  mailpit:
+    - mail.mikepage-dev.lndo.site
