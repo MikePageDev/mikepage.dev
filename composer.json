@@ -12,7 +12,7 @@
         "filament/forms": "^5.0",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0",
-        "mikepagedev/filament-portfolio": "^1.0",
+        "mikepagedev/filament-portfolio": "^1.0.1",
         "mikepagedev/portfolio-frontend": "^1.0"
     },
     "require-dev": {
