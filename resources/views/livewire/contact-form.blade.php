@@ -22,6 +22,9 @@
                 <x-filament::button type="submit" size="lg">
                     Send message
                 </x-filament::button>
+                <p class="mt-3 text-sm text-neutral-500">
+                    <a href="{{ route('privacy') }}" class="underline hover:text-neutral-400">See how your details are used</a>
+                </p>
             </div>
         </form>
     @endif
