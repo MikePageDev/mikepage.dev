@@ -24,3 +24,5 @@ Route::get('/about', function () {
 Route::view('/services', 'services')->name('services');
 
 Route::view('/contact', 'contact')->name('contact');
+
+Route::view('/privacy', 'privacy')->name('privacy');
