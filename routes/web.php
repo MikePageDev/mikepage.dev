@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use MikePageDev\FilamentPortfolio\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,9 @@ Route::view('/services', 'services')->name('services');
 Route::view('/contact', 'contact')->name('contact');
 
 Route::view('/privacy', 'privacy')->name('privacy');
+
+Route::get('/sitemap.xml', function () {
+    return response()->view('sitemap', [
+        'projects' => Project::query()->published()->ordered()->get(['slug', 'updated_at']),
+    ], 200, ['Content-Type' => 'application/xml; charset=UTF-8']);
+})->name('sitemap');
