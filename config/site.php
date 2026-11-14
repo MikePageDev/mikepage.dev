@@ -2,8 +2,11 @@
 
 return [
 
+    // Follows the name in the home page's title.
+    'tagline' => 'PHP and Laravel developer',
+
     // Default meta / Open Graph description for pages that don't set their own.
-    'description' => 'Freelance Laravel developer building and maintaining custom web applications, APIs and Filament admin panels.',
+    'description' => 'PHP and Laravel developer available for freelance work alongside a full-time role, building bespoke business software, APIs and Filament admin panels.',
 
     // Image used when a page is shared on social media (path relative to public/).
     'og_image' => 'img/mike.jpg',
