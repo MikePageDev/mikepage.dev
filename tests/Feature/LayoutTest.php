@@ -18,12 +18,13 @@ class LayoutTest extends TestCase
             'app.name' => 'Test Site',
             'site.description' => 'Default description',
             'site.og_image' => 'img/mike.jpg',
+            'site.tagline' => 'Test tagline',
         ]);
     }
 
-    public function test_home_title_is_the_app_name(): void
+    public function test_home_title_is_the_app_name_and_tagline(): void
     {
-        $this->get('/')->assertSee('<title>Test Site</title>', false);
+        $this->get('/')->assertSee('<title>Test Site | Test tagline</title>', false);
     }
 
     public function test_meta_description_defaults_to_site_description(): void
@@ -34,7 +35,7 @@ class LayoutTest extends TestCase
     public function test_open_graph_tags_are_present(): void
     {
         $this->get('/')
-            ->assertSee('<meta property="og:title" content="Test Site">', false)
+            ->assertSee('<meta property="og:title" content="Test Site | Test tagline">', false)
             ->assertSee('<meta property="og:description" content="Default description">', false)
             ->assertSee('<meta property="og:url" content="'.url('/').'">', false)
             ->assertSee('<meta property="og:image" content="'.asset('img/mike.jpg').'">', false)

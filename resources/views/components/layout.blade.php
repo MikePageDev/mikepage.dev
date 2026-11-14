@@ -4,7 +4,8 @@
 ])
 
 @php
-    $pageTitle = $title ? $title . ' | ' . config('app.name') : config('app.name');
+    // Pages without their own title (the home page) get the name and tagline.
+    $pageTitle = $title ? $title . ' | ' . config('app.name') : config('app.name') . ' | ' . config('site.tagline');
     $pageDescription = $description ?? config('site.description');
     $navLinks = [
         'about' => 'About',
@@ -47,6 +48,7 @@
 </head>
 
 <body class="min-h-screen max-w-(--breakpoint-lg) mx-auto flex flex-col bg-white dark:bg-neutral-900 dark:text-white">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-20 focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold focus:bg-neutral-900 focus:text-white dark:focus:bg-white dark:focus:text-neutral-900">Skip to content</a>
     <nav aria-label="Main" class="relative flex justify-between h-20 items-center px-5">
         <a href="{{ route('home') }}" class="h-14 w-14 rounded-full border-2 border-white dark:border-neutral-700 group shadow-sm">
             <img src="{{ asset('img/mike.jpg') }}" alt="Mike Page" class="rounded-full group-hover:opacity-80 transition-all duration-150">
@@ -85,7 +87,7 @@
             <x-heroicon-s-sun x-show="darkMode" x-cloak aria-hidden="true" class="p-2 ml-3 w-8 h-8 text-gray-100 bg-neutral-700 rounded-md transition cursor-pointer dark:hover:bg-neutral-600" />
         </button>
     </nav>
-    <main class="flex flex-1 flex-col px-5">
+    <main id="main" tabindex="-1" class="flex flex-1 flex-col px-5 focus:outline-none">
         {{ $slot }}
     </main>
     <footer class="flex flex-col items-center py-5 px-5 text-center">
@@ -93,7 +95,7 @@
             <x-social-links />
         </div>
         <div class="text-sm text-neutral-500">
-            <p>This site has been developed by Mike Page, and is <a href="https://github.com/MikePageDev/mikepage.dev" class="underline hover:text-neutral-400">open source</a></p>
+            <p>Built by Mike Page · <a href="https://github.com/MikePageDev/mikepage.dev" class="underline hover:text-neutral-400">Open source on GitHub</a></p>
             <p class="mt-1"><a href="{{ route('privacy') }}" class="underline hover:text-neutral-400">Privacy notice</a></p>
         </div>
     </footer>

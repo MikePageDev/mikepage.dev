@@ -69,7 +69,7 @@ class ContactFormTest extends TestCase
         $component->assertHasNoErrors();
         $component
             ->assertSet('sent', true)
-            ->assertSee("Thanks, your message has been sent. I'll get back to you as soon as I can.", false)
+            ->assertSee("Thanks, your message has been sent. I'll get back to you within 3 working days.", false)
             ->assertDontSee('Send message');
 
         $enquiry = Enquiry::sole();

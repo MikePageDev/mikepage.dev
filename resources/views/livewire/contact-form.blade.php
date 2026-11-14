@@ -1,7 +1,7 @@
 <div id="form" class="mb-8">
     @if ($sent)
         <p role="status" class="text-lg font-semibold p-5 rounded-md border border-neutral-200 dark:border-neutral-700">
-            Thanks, your message has been sent. I'll get back to you as soon as I can.
+            Thanks, your message has been sent. I'll get back to you within 3 working days.
         </p>
     @else
         <form wire:submit="submit" class="flex flex-col gap-6">
