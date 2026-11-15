@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79f3a892f4e61fdc8f7105e7ebf090b1",
+    "content-hash": "d5fe7e30056edb4bb7a46b465639aac9",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3544,16 +3544,16 @@
         },
         {
             "name": "mikepagedev/portfolio-frontend",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MikePageDev/portfolio-frontend.git",
-                "reference": "b1c755b466b948d1758777659a865642009c4f87"
+                "reference": "adea9c8daf65c8534d56b77a86ad25a077793170"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MikePageDev/portfolio-frontend/zipball/b1c755b466b948d1758777659a865642009c4f87",
-                "reference": "b1c755b466b948d1758777659a865642009c4f87",
+                "url": "https://api.github.com/repos/MikePageDev/portfolio-frontend/zipball/adea9c8daf65c8534d56b77a86ad25a077793170",
+                "reference": "adea9c8daf65c8534d56b77a86ad25a077793170",
                 "shasum": ""
             },
             "require": {
@@ -3603,7 +3603,7 @@
                 "issues": "https://github.com/MikePageDev/portfolio-frontend/issues",
                 "source": "https://github.com/MikePageDev/portfolio-frontend"
             },
-            "time": "2026-11-06T10:14:05+00:00"
+            "time": "2026-11-15T09:02:47+00:00"
         },
         {
             "name": "monolog/monolog",
