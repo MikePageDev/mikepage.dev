@@ -37,4 +37,10 @@ return [
     // Prompt at the end of a case study. [text] marks the link. Null leaves it out.
     'case_study_contact_prompt' => 'Need something similar? [Get in touch].',
 
+    // Match the home page buttons: the primary palette is set in AppServiceProvider.
+    'button_classes' => [
+        'primary' => 'bg-primary-600 text-white hover:bg-primary-700 dark:hover:bg-primary-500',
+        'secondary' => 'border-primary-600 hover:bg-primary-50 dark:border-primary-400 dark:hover:bg-primary-950',
+    ],
+
 ];
