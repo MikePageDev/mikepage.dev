@@ -1,9 +1,14 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "mikepagedev/mikepage.dev",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "The website of Mike Page, a freelance Laravel developer.",
+    "keywords": [
+        "laravel",
+        "filament",
+        "portfolio"
+    ],
+    "homepage": "https://mikepage.dev",
     "license": "MIT",
     "require": {
         "php": "^8.5",
@@ -74,7 +79,8 @@
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ],
-        "stan": "phpstan analyse --memory-limit=512M"
+        "stan": "phpstan analyse --memory-limit=512M",
+        "lint": "pint --test"
     },
     "extra": {
         "laravel": {

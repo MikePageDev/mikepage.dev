@@ -14,9 +14,11 @@ class HomePageTest extends TestCase
         $this->assertSame(1, substr_count($content, '<h1'));
     }
 
-    public function test_links_to_portfolio_and_contact(): void
+    public function test_links_to_the_main_pages(): void
     {
         $this->get('/')
+            ->assertSee('href="'.route('about').'"', false)
+            ->assertSee('href="'.route('services').'"', false)
             ->assertSee('href="'.route('portfolio.index').'"', false)
             ->assertSee('href="'.route('contact').'"', false)
             ->assertSee('See my work')

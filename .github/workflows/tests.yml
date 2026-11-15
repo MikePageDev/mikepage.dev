@@ -1,0 +1,53 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    name: PHP 8.5
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: fileinfo, gd, intl, pdo_sqlite, sqlite3
+          coverage: none
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Prepare the environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Install and build front-end assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Run tests
+        run: composer test
+
+      - name: Run static analysis
+        run: composer stan
+
+      - name: Check code style
+        run: composer lint
+
+      - name: Check Blade formatting
+        run: npm run format:check
