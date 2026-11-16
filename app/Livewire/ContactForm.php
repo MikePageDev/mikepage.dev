@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Mail\EnquiryReceived;
 use App\Models\Enquiry;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
@@ -13,10 +12,7 @@ use Filament\Schemas\Concerns\RestrictsFileUploadsToSchemaComponents;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
-use Throwable;
 
 /**
  * @property-read Schema $form
@@ -103,28 +99,10 @@ class ContactForm extends Component implements HasSchemas
             'ip_address' => request()->ip(),
         ]);
 
-        $this->send($enquiry);
+        // The enquiry is stored either way, so the visitor sees success even if the email fails.
+        $enquiry->deliver();
 
         $this->sent = true;
-    }
-
-    private function send(Enquiry $enquiry): void
-    {
-        $to = config('site.contact_email');
-
-        if (! is_string($to) || $to === '') {
-            Log::warning('CONTACT_EMAIL is not set; enquiry saved but not emailed.', ['enquiry_id' => $enquiry->id]);
-
-            return;
-        }
-
-        try {
-            Mail::send(new EnquiryReceived($enquiry));
-            $enquiry->update(['sent_at' => now()]);
-        } catch (Throwable $exception) {
-            // The enquiry is stored, so the visitor still sees success; find failures with whereNull('sent_at').
-            report($exception);
-        }
     }
 
     public function render(): View

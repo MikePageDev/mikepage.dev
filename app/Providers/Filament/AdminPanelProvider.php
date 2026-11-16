@@ -38,6 +38,7 @@ class AdminPanelProvider extends PanelProvider
                 AppAuthentication::make()->recoverable(),
             ], isRequired: true)
             ->plugin(FilamentPortfolioPlugin::make())
+            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->pages([
                 Dashboard::class,
             ])
