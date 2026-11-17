@@ -15,5 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(NoIndexOutsideProduction::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        // Send reported errors to Honeybadger as well as the log, including ones caught
+        // and passed to report(), such as an enquiry email that fails to send.
+        $exceptions->reportable(function (Throwable $e): void {
+            if (app()->bound('honeybadger')) {
+                app('honeybadger')->notify($e, app('request'));
+            }
+        });
     })->create();
