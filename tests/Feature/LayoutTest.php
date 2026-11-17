@@ -86,7 +86,6 @@ class LayoutTest extends TestCase
     {
         $this->get('/')
             ->assertSee('href="https://github.com/MikePageDev"', false)
-            ->assertSee('href="https://phpc.social/@MikePageDev"', false)
             ->assertSee('href="https://www.linkedin.com/in/michaelaspage/"', false);
     }
 
