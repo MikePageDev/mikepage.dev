@@ -1,4 +1,4 @@
-name: tests
+name: CI
 
 on:
   push:
@@ -51,3 +51,28 @@ jobs:
 
       - name: Check Blade formatting
         run: npm run format:check
+
+  deploy:
+    needs: tests
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+
+    name: Deploy to ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
+    # The Forge deploy hook URL lives in each environment's FORGE_DEPLOY_HOOK secret.
+    environment: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
+
+    concurrency:
+      group: deploy-${{ github.ref_name }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Trigger Forge deployment
+        env:
+          FORGE_DEPLOY_HOOK: ${{ secrets.FORGE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$FORGE_DEPLOY_HOOK" ]; then
+            echo "::error::FORGE_DEPLOY_HOOK secret is not set for this environment."
+            exit 1
+          fi
+          curl -fsS -X POST "$FORGE_DEPLOY_HOOK"
