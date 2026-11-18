@@ -1,6 +1,6 @@
 # mikepage.dev
 
-[![Tests](https://github.com/MikePageDev/mikepage.dev/actions/workflows/tests.yml/badge.svg)](https://github.com/MikePageDev/mikepage.dev/actions/workflows/tests.yml)
+[![CI](https://github.com/MikePageDev/mikepage.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/MikePageDev/mikepage.dev/actions/workflows/ci.yml)
 
 The website of Mike Page, a PHP and Laravel developer available for freelance work alongside a full-time role. I build bespoke internal applications, APIs and Filament admin panels.
 
